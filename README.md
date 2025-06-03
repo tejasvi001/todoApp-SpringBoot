@@ -23,6 +23,5 @@ A simple RESTful API built using **Spring Boot** to manage a TODO list. This app
 
 ---
 
-Let me know if you’d like a version with Swagger annotations, Docker support, or database config examples added.
 
 
