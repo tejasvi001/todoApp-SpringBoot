@@ -1,14 +1,16 @@
 package com.example.todo.dtos;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.example.todo.annotations.StatusValidation;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.Date;
 
 public class TodoDTO {
+
     private Long id;
+    @NotBlank
     private String title;
+    @StatusValidation
     private String status;
     private String description;
     private Date dueDate;

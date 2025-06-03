@@ -3,6 +3,7 @@ package com.example.todo.controllers;
 import com.example.todo.dtos.TodoDTO;
 import com.example.todo.services.TodoService;
 import com.example.todo.services.TodoServiceImpl;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,17 +21,17 @@ public class TodoController {
     }
 
     @GetMapping
-    public List<TodoDTO> getAllTodos(){
-        return todoService.getAllTodos();
+    public ResponseEntity<List<TodoDTO>> getAllTodos(){
+        return ResponseEntity.status(200).body(todoService.getAllTodos());
     }
     @PostMapping
-    public TodoDTO addTodo(@RequestBody TodoDTO todoDTO){
-        return todoService.addTodo(todoDTO);
+    public ResponseEntity<TodoDTO> addTodo(@RequestBody TodoDTO todoDTO){
+        return ResponseEntity.status(201).body(todoService.addTodo(todoDTO));
     }
 
     @GetMapping("/{id}")
-    public TodoDTO getToDoById(@PathVariable Long id){
-        return todoService.getToDoByID(id);
+    public ResponseEntity<TodoDTO> getToDoById(@PathVariable Long id){
+        return ResponseEntity.status(200).body(todoService.getToDoByID(id));
     }
 
     @DeleteMapping("/{id}")
