@@ -1,27 +1,29 @@
-# 📝 Todo App - Spring Boot
+📝 TODO App with Pagination, Sorting, Swagger UI
+🚀 Features
+🔍 Get all TODOs with pagination and sorting
 
-A simple RESTful API built using **Spring Boot** to manage a TODO list. This application supports CRUD operations for TODO items, including title, description, status, and due date.
+➕ Add new TODO
 
----
+✏️ Update existing TODO (full & partial)
 
-## 🚀 Features
+❌ Delete a TODO by ID
 
-- 🔍 Get all TODOs
-- ➕ Add new TODO
-- ✏️ Update existing TODO
-- ❌ Delete a TODO
-- 📌 Get TODO by ID
+📌 Get TODO by ID
 
----
+📄 Auto-generated Swagger documentation (OpenAPI 3)
 
-## 📦 Tech Stack
+🧪 Validations and error handling (Optional to add later)
 
-- ☕ Java 17+
-- 🌱 Spring Boot
-- 📄 REST API
-- 🐘 MySQL (for database)
+📦 Tech Stack
+☕ Java 17+
 
----
+🌱 Spring Boot 3+
 
+🐘 MySQL / H2 (for database)
 
+📄 Spring Data JPA
+
+📦 ModelMapper
+
+🔎 Springdoc OpenAPI 3 + Swagger UI
 
