@@ -1,12 +1,14 @@
 package com.example.todo.services;
 
 import com.example.todo.dtos.TodoDTO;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Map;
 
 public interface TodoService {
-    List<TodoDTO> getAllTodos();
+    Page<TodoDTO> getAllTodos(Pageable pageable);
 
     TodoDTO addTodo(TodoDTO todoDTO);
 

@@ -4,6 +4,8 @@ import com.example.todo.dtos.TodoDTO;
 import com.example.todo.entities.ToDoEntity;
 import com.example.todo.repositories.TodoRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
 
@@ -24,20 +26,9 @@ public class TodoServiceImpl implements TodoService{
         this.modelMapper = modelMapper;
     }
 
-    public List<TodoDTO> getAllTodos() {
-        List<ToDoEntity> todos=todoRepository.findAll();
-        if (todos == null) {
-            return Collections.emptyList();
-        }
-        return todos.stream()
-                .map(
-                        toDoEntity -> modelMapper.map(
-                                toDoEntity,TodoDTO.class
-                        )
-                )
-                .collect(
-                        Collectors.toList()
-                );
+    public Page<TodoDTO> getAllTodos(Pageable pageable) {
+        Page<ToDoEntity> todoPage = todoRepository.findAll(pageable);
+        return todoPage.map(todo -> modelMapper.map(todo, TodoDTO.class));
     }
 
     public TodoDTO addTodo(TodoDTO todoDTO) {

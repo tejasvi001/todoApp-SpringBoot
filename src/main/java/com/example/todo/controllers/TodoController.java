@@ -3,6 +3,9 @@ package com.example.todo.controllers;
 import com.example.todo.dtos.TodoDTO;
 import com.example.todo.exceptions.TodoNotFoundException;
 import com.example.todo.services.TodoService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,10 +23,11 @@ public class TodoController {
     public TodoController(TodoService todoService) {
         this.todoService = todoService;
     }
-
     @GetMapping
-    public ResponseEntity<List<TodoDTO>> getAllTodos(){
-        return ResponseEntity.status(200).body(todoService.getAllTodos());
+    public ResponseEntity<Page<TodoDTO>> getAllTodos(
+            @PageableDefault(page = 0, size = 10, sort = "id") Pageable pageable
+    ) {
+        return ResponseEntity.ok(todoService.getAllTodos(pageable));
     }
     @PostMapping
     public ResponseEntity<TodoDTO> addTodo(@RequestBody TodoDTO todoDTO){
