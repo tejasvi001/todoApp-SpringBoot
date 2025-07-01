@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(TodoNotFoundException.class)
-    public ResponseEntity<?> handleTodoNotFoundEXception(TodoNotFoundException exception){
+    public ResponseEntity<?> handleTodoNotFoundException(TodoNotFoundException exception){
         APIError apiError= APIError
                 .builder()
                 .message(exception.getMessage())
